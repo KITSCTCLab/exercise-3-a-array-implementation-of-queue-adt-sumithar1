@@ -73,7 +73,7 @@ class Solution:
         """
         if not self.is_queue_full() and self.rear < self.size - 1:
                 self.rear += 1
-                self.queue[self.rear] = character
+                self.queue[self.rear-1] = character
 
     def pop_character(self):
         """
