@@ -95,8 +95,8 @@ class Solution:
           The data that is dequeued if the queue is not empty.
         """
         if not self.is_queue_empty():
-            del(self.queue[self.front])
             self.front += 1
+            return self.queue[self.front - 1]
 
 
 # read the string text
