@@ -71,9 +71,11 @@ class Solution:
         Arguments:
             character: A character that will be enqueued to queue.
         """
-        if not self.is_queue_full() and self.rear < self.size - 1:
-                self.rear += 1
-                self.queue[self.rear-1] = character
+        if not self.is_queue_full():
+            if  self.front == -1:
+                self.front = 0
+            self.rear += 1
+            self.queue.append(character)
 
     def pop_character(self):
         """
