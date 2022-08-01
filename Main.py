@@ -28,7 +28,7 @@ class Solution:
         Returns:
           True if it is empty, else returns False.
         """
-        return len(self.stack) == 0
+        return self.top == -1
 
     def is_queue_empty(self):
         """
@@ -36,7 +36,7 @@ class Solution:
         Returns:
           True if it is empty, else returns False.
         """
-        return len(self.queue) == 0
+        return self.front == -1 or self.front > self.rear
 
     def is_stack_full(self):
         """
@@ -44,7 +44,7 @@ class Solution:
         Returns:
           True if it is full, else returns False.
         """
-        return len(self.stack) == self.size
+        return self.top == self.size - 1
 
     def is_queue_full(self):
         """
@@ -52,7 +52,7 @@ class Solution:
         Returns:
           True if it is full, else returns False.
         """
-        return len(self.queue) == self.size
+        return self.rear == self.size - 1
 
     def push_character(self, character):
         """
@@ -63,7 +63,6 @@ class Solution:
         if not self.is_stack_full():
             self.stack.append(character)
             self.top += 1
-            
 
     def enqueue_character(self, character):
         """
@@ -84,9 +83,8 @@ class Solution:
           The data that is popped out if the stack is not empty.
         """
         if not self.is_stack_empty():
-            self.stack.pop()
             self.top -= 1
-        
+            return self.stack.pop(self.top + 1)
 
     def dequeue_character(self):
         """
@@ -96,7 +94,8 @@ class Solution:
         """
         if not self.is_queue_empty():
             self.front += 1
-            return self.queue[self.front - 1]
+            return self.queue[self.front - 1] 
+                
 
 
 # read the string text
@@ -119,11 +118,11 @@ pop the top character from stack
 dequeue the first character from queue
 compare both characters
 If the comparison fails, set is_palindrome as False.
+T
 '''
-top_character = solution.pop_character
-first_character = solution.dequeue_character
-if top_character != first_character:
-    is_palindrome = False
+for index in range(length_of_text):
+    if solution.pop_character() != solution.dequeue_character():
+        is_palindrome = False
 
 
 # finally print whether string text is palindrome or not.
