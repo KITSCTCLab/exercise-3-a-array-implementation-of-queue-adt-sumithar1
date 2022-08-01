@@ -71,7 +71,7 @@ class Solution:
         Arguments:
             character: A character that will be enqueued to queue.
         """
-        if not self.is_queue_full():
+        if not self.is_queue_full() and self.rear < self.size - 1:
                 self.rear += 1
                 self.queue[self.rear] = character
 
